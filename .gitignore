@@ -1,10 +1,11 @@
-node_modules
+example/node_modules
 
-.woke-build
-.woke-logs
-.env
-pytypes
-__pycache__/
-*.py[cod]
-.hypothesis/
-woke-coverage.cov
+example/.woke-build
+example/.woke-logs
+example/.env
+example/pytypes
+example/tests/__pycache__/
+example/scripts/__pycache__/
+example/*.py[cod]
+example/.hypothesis/
+example/woke-coverage.cov

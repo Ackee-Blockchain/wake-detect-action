@@ -1,0 +1,32 @@
+name: Woke detect
+
+on: [push]
+
+jobs:
+  analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+
+      - name: Install dependencies
+        working-directory: ./example
+        run: |
+          npm ci
+
+      # TODO: passing build data
+      #
+      # Error:
+      # ------
+      # No build key found, cannot verify build signature
+      # Failed to load previous build artifacts
+
+      - name: Detect
+        uses: ./
+        with:
+          working-directory: ./example
+          compile-include-paths: "node_modules"
+        id: woke-detect

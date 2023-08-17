@@ -1,9 +1,9 @@
 [compiler.solc]
 ignore_paths = ["node_modules", ".woke-build", "venv", "lib"]
-include_paths = ["node_modules"]
+include_paths = []
 
 [detectors]
-exclude = []
+exclude = ["axelar-proxy-contract-id"]
 ignore_paths = ["node_modules", ".woke-build", "venv", "lib"]
 
 [testing]

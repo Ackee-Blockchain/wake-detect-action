@@ -1,0 +1,77 @@
+# action.yml
+name: 'Woke detect'
+description: 'Runs Woke static analysis'
+inputs:
+  working-directory:
+    description: 'Working directory'
+    required: false
+  compile-allow-paths:
+    description: 'Paths that are allowed for the compiler'
+    required: false
+  compile-evm-version:
+    description: 'EVM version to compile for'
+    required: false
+  compile-ignore-paths:
+    description: 'Paths that the compiler should ignore'
+    required: false
+  compile-include-paths:
+    description: 'Paths that should be included in the compilation'
+    required: false
+  compile-optimizer-enabled:
+    description: 'Enable the optimizer during compilation'
+    required: false
+  compile-optimizer-runs:
+    description: 'Number of runs for the optimizer'
+    required: false
+  compile-remappings:
+    description: 'Remappings for the compiler'
+    required: false
+  compile-target-version:
+    description: 'Target version for the compiler'
+    required: false
+  compile-via-ir:
+    description: 'Compile via IR'
+    required: false
+  detect-min-impact:
+    description: 'Minimum impact level for detection'
+    required: false
+  detect-min-confidence:
+    description: 'Minimum confidence level for detection'
+    required: false
+  detect-paths:
+    description: 'Paths for detection'
+    required: false
+  detect-only:
+    description: 'Only detect these items'
+    required: false
+  detect-exclude:
+    description: 'Exclude these items from detection'
+    required: false
+  detect-ignore-paths:
+    description: 'Paths to ignore during detection'
+    required: false
+  detect-exclude-paths:
+    description: 'Paths to exclude during detection'
+    required: false
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.working-directory }}
+    - ${{ inputs.compile-allow-paths }}
+    - ${{ inputs.compile-evm-version }}
+    - ${{ inputs.compile-ignore-paths }}
+    - ${{ inputs.compile-include-paths }}
+    - ${{ inputs.compile-optimizer-enabled }}
+    - ${{ inputs.compile-optimizer-runs }}
+    - ${{ inputs.compile-remappings }}
+    - ${{ inputs.compile-target-version }}
+    - ${{ inputs.compile-via-ir }}
+    - ${{ inputs.detect-min-impact }}
+    - ${{ inputs.detect-min-confidence }}
+    - ${{ inputs.detect-paths }}
+    - ${{ inputs.detect-only }}
+    - ${{ inputs.detect-exclude }}
+    - ${{ inputs.detect-ignore-paths }}
+    - ${{ inputs.detect-exclude-paths }}

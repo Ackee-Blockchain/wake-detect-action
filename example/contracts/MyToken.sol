@@ -47,4 +47,12 @@ contract MyToken is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeable, P
         onlyOwner
         override
     {}
+
+    function foo() public returns(uint) {
+        return 1;
+    }
+
+    function bar() public {
+        this.foo();
+    }
 }
