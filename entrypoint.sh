@@ -28,8 +28,6 @@ export WOKE_DETECT_EXCLUDE_PATHS="${17}" # Example: "[/tmp:/tmp]"
 #   Execution part   #
 ######################
 
-echo "include paths: $WOKE_COMPILE_INCLUDE_PATHS"
-
 # change working directory
 if [ -n "$WORKING_DIRECTORY" ]; then
   cd "$WORKING_DIRECTORY"
