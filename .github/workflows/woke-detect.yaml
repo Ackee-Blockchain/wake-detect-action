@@ -17,13 +17,6 @@ jobs:
         run: |
           npm ci
 
-      # TODO: passing build data
-      #
-      # Error:
-      # ------
-      # No build key found, cannot verify build signature
-      # Failed to load previous build artifacts
-
       - name: Detect
         uses: ./
         with:
