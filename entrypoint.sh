@@ -47,8 +47,8 @@ fi
 EXPORT=""
 
 if [ -n "$EXPORT_SHARIF" ]; then
-  EXPORT="--export=sharif"
+  EXPORT="--export=sarif"
   echo "sarif=$WORKING_DIRECTORY/woke-detections.sarif" >> $GITHUB_ENV
 fi
 
-woke detect all $WOKE_DETECT_PATHS $EXPORT
+woke detect $EXPORT all $WOKE_DETECT_PATHS
