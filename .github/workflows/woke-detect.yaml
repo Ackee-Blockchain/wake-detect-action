@@ -29,4 +29,10 @@ jobs:
         with:
           working-directory: ./example
           compile-include-paths: "node_modules"
+          export-sarif: true
         id: woke-detect
+
+      - name: Upload SARIF
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ${{ steps.woke-detect.outputs.sarif }}

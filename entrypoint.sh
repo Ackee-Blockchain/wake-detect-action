@@ -1,6 +1,15 @@
 #!/bin/sh -l
 
 
+# Setup testing environment
+git clone https://github.com/Ackee-Blockchain/woke.git
+cd woke
+git checkout feat/printers
+pip install .
+cd ..
+pip3 install temp-wake-detectors
+
+
 ##################################
 #   Woke environment variables   #
 ##################################
