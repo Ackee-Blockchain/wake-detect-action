@@ -16,7 +16,7 @@ pip3 install temp-wake-detectors
 
 WORKING_DIRECTORY="${1}"
 EXPORT_SHARIF="${2}"
-WOKE_CONFIG_PATH="${3}"
+export WOKE_CONFIG="${3}"
 export WOKE_COMPILE_ALLOW_PATHS="${4}" # Example: "[/tmp:/tmp]"
 export WOKE_COMPILE_EVM_VERSION="${5}" # Example: "prague"
 export WOKE_COMPILE_IGNORE_PATHS="${6}" # Example: "[/tmp:/tmp]"
@@ -39,12 +39,6 @@ export WOKE_DETECT_EXCLUDE_PATHS="${19}" # Example: "[/tmp:/tmp]"
 #   Execution part   #
 ######################
 
-CONFIG=""
-
-if [ -n "$WOKE_CONFIG_PATH" ]; then
-  CONFIG="--config $WOKE_CONFIG_PATH"
-fi
-
 # change working directory
 if [ -n "$WORKING_DIRECTORY" ]; then
   cd "$WORKING_DIRECTORY"
@@ -57,4 +51,4 @@ if [ -n "$EXPORT_SHARIF" ]; then
   echo "sarif=$WORKING_DIRECTORY/woke-detections.sarif" >> $GITHUB_ENV
 fi
 
-woke "$CONFIG" detect all $WOKE_DETECT_PATHS $EXPORT
+woke detect all $WOKE_DETECT_PATHS $EXPORT
