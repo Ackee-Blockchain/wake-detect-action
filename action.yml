@@ -5,6 +5,12 @@ inputs:
   working-directory:
     description: 'Working directory'
     required: false
+  export-sarif:
+    description: 'Export SARIF file'
+    required: false
+  config-path:
+    description: 'Path to the configuration file relative to the working directory'
+    required: false
   compile-allow-paths:
     description: 'Paths that are allowed for the compiler'
     required: false
@@ -53,12 +59,17 @@ inputs:
   detect-exclude-paths:
     description: 'Paths to exclude during detection'
     required: false
+outputs:
+  sarif:
+    description: 'Exported SARIF file path relative to the repository root'
 
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.working-directory }}
+    - ${{ inputs.export-sarif }}
+    - ${{ inputs.config-path }}
     - ${{ inputs.compile-allow-paths }}
     - ${{ inputs.compile-evm-version }}
     - ${{ inputs.compile-ignore-paths }}
