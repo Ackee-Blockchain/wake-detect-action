@@ -15,7 +15,7 @@ pip3 install temp-wake-detectors
 ##################################
 
 WORKING_DIRECTORY="${1}"
-EXPORT_SHARIF="${2}"
+EXPORT_SARIF="${2}"
 export WOKE_CONFIG="${3}"
 export WOKE_COMPILE_ALLOW_PATHS="${4}" # Example: "[/tmp:/tmp]"
 export WOKE_COMPILE_EVM_VERSION="${5}" # Example: "prague"
@@ -46,9 +46,16 @@ fi
 
 EXPORT=""
 
-if [ -n "$EXPORT_SHARIF" ]; then
+if [ -n "$EXPORT_SARIF" ]; then
   EXPORT="--export=sarif"
   echo "sarif=$WORKING_DIRECTORY/woke-detections.sarif" >> $GITHUB_ENV
 fi
 
 woke detect $EXPORT all $WOKE_DETECT_PATHS
+STATUS=$?
+
+if [ "$EXPORT_SARIF" = true -a $STATUS -eq 3 ]; then
+  exit 0
+else
+  exit $STATUS
+fi
