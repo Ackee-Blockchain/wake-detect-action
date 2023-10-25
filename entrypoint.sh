@@ -48,11 +48,13 @@ EXPORT=""
 
 if [ -n "$EXPORT_SARIF" ]; then
   EXPORT="--export=sarif"
-  echo "sarif=$WORKING_DIRECTORY/woke-detections.sarif" >> $GITHUB_ENV
+  echo "sarif=$WORKING_DIRECTORY/woke-detections.sarif" >> $GITHUB_OUTPUT
 fi
 
 woke detect $EXPORT all $WOKE_DETECT_PATHS
 STATUS=$?
+
+echo "$GITHUB_WORKSPACE"
 
 if [ "$EXPORT_SARIF" = true -a $STATUS -eq 3 ]; then
   exit 0

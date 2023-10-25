@@ -54,5 +54,9 @@ contract MyToken is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeable, P
 
     function bar() public {
         this.foo();
+        this.foo();
+        this.foo();
+        this.foo();
+        this.foo();
     }
 }
