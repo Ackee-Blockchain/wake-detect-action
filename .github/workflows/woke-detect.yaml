@@ -18,7 +18,7 @@ jobs:
           npm ci
 
       - name: Detect
-        uses: ./
+        uses: Ackee-Blockchain/woke-detect-pipeline@0.0.1
         with:
           working-directory: ./example
           compile-include-paths: "node_modules"

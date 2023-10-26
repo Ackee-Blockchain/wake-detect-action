@@ -53,6 +53,8 @@ contract MyToken is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeable, P
     }
 
     function bar() public {
+        (bool success, bytes memory data) = address(msg.sender).call(abi.encodeWithSignature("foo()"));
+        _mint(msg.sender, 10);
         this.foo();
         this.foo();
         this.foo();
