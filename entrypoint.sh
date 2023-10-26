@@ -1,7 +1,7 @@
 #!/bin/sh -l
 
 
-# Setup testing environment
+# Setup testing environment - TEMPORARY
 git clone https://github.com/Ackee-Blockchain/woke.git
 cd woke
 git checkout feat/printers
@@ -42,6 +42,8 @@ export WOKE_DETECT_EXCLUDE_PATHS="${19}" # Example: "[/tmp:/tmp]"
 # change working directory
 if [ -n "$WORKING_DIRECTORY" ]; then
   cd "$WORKING_DIRECTORY"
+else
+  WORKING_DIRECTORY="."
 fi
 
 EXPORT=""
@@ -51,13 +53,16 @@ if [ -n "$EXPORT_SARIF" ]; then
   echo "sarif=$WORKING_DIRECTORY/woke-detections.sarif" >> $GITHUB_OUTPUT
 fi
 
-woke detect $EXPORT all $WOKE_DETECT_PATHS
+echo ${WORKING_DIRECTORY}
+echo ${EXPORT}
+
+woke detect ${EXPORT} all ${WOKE_DETECT_PATHS}
 STATUS=$?
 
 echo "$GITHUB_WORKSPACE"
 
-if [ "$EXPORT_SARIF" = true -a $STATUS -eq 3 ]; then
+if [ "$EXPORT_SARIF" = true -a ${STATUS} -eq 3 ]; then
   exit 0
 else
-  exit $STATUS
+  exit ${STATUS}
 fi

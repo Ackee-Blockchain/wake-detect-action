@@ -22,7 +22,6 @@ jobs:
         with:
           working-directory: ./example
           compile-include-paths: "node_modules"
-          export-sarif: true
         id: woke-detect
 
       - name: Upload SARIF as artifact
