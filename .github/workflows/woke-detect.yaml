@@ -20,7 +20,9 @@ jobs:
       - name: Detect
         uses: Ackee-Blockchain/woke-detect-pipeline@0.0.1
         with:
+          working-directory: ./example
           compile-include-paths: "node_modules"
+          export-sarif: true
         id: woke-detect
 
       - name: Upload SARIF as artifact
