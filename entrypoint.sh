@@ -58,7 +58,7 @@ woke detect ${EXPORT} all ${WOKE_DETECT_PATHS}
 STATUS=$?
 
 echo "$GITHUB_WORKSPACE"
-echo ${WORKING_DIRECTORY}
+echo "$WORKING_DIRECTORY"
 echo ${EXPORT}
 
 if [ "$EXPORT_SARIF" = true -a ${STATUS} -eq 3 ]; then
