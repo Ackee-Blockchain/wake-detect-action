@@ -1,6 +1,6 @@
 # action.yml
-name: 'Woke detect'
-description: 'Runs Woke static analysis'
+name: 'Wake detect'
+description: 'Runs Wake static analysis'
 inputs:
   working-directory:
     description: 'Working directory'
